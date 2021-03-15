@@ -20,6 +20,8 @@ class Capybara:
     def __str__(self):
         return "Capybara(" + self.name + ", " + str(self.age) + ")"
     
+    __repr__ = __str__
+
     def as_list(self):
         return [self.name, self.age]
 
@@ -28,3 +30,14 @@ capybara2=Capybara('Tim',24)
 capybara3=Capybara('Lulu',27)
 capybara4=Capybara('Nancy',37)
 capybara5=Capybara('Tod',30)
+
+
+import csv
+def read_capis(filename):
+    with open(filename,'r',newline='') as file:
+        reader=csv.reader(file)
+        capis = []
+        next(reader)
+        for row in reader:
+            capis.append(Capybara(row[0], row[1]))
+    return capis
