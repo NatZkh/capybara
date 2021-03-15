@@ -1,3 +1,6 @@
+import csv
+
+#define Capybara class with two attributes - name and age
 class Capybara:
     def __init__(self,name,age):
         self.name=name
@@ -31,8 +34,7 @@ capybara3=Capybara('Lulu',27)
 capybara4=Capybara('Nancy',37)
 capybara5=Capybara('Tod',30)
 
-
-import csv
+#read_capis function to extract capybara from csv into list
 def read_capis(filename):
     with open(filename,'r',newline='') as file:
         reader=csv.reader(file)
@@ -41,3 +43,11 @@ def read_capis(filename):
         for row in reader:
             capis.append(Capybara(row[0], row[1]))
     return capis
+
+
+#function write_capybaras that creates capybara csv
+def write_capybaras(filename, capis):
+    with open(filename,'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Name", "Age"])
+        writer.writerows(capis)
