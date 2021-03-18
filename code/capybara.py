@@ -33,6 +33,7 @@ capybara2=Capybara('Tim',24)
 capybara3=Capybara('Lulu',27)
 capybara4=Capybara('Nancy',37)
 capybara5=Capybara('Tod',30)
+capybara6=Capybara('Paddy',20)
 
 #read_capis function to extract capybara from csv into list
 def read_capis(filename):
@@ -51,3 +52,34 @@ def write_capybaras(filename, capis):
         writer = csv.writer(file)
         writer.writerow(["Name", "Age"])
         writer.writerows(capis)
+
+
+#final way to get the list of capybaras with longest name
+capy_list = [capybara1, capybara2, capybara3, capybara4, capybara5, capybara6]
+
+max_len = -1
+result = []
+for c in capy_list:
+    if len(c.name) > max_len:
+        max_len = len(c.name)
+        result = [c.name]
+    elif len(c.name) == max_len:
+        result.append(c.name)
+    
+print(result)
+
+#to print not only name but full Capybara, create capybara dictionary
+
+capy_dict = {}
+for cp in capy_list:
+    capy_dict[cp.name] = cp
+
+#OR
+
+new_capys_dic = {c.name: c for c in capy_list}
+
+#then
+
+for v in result:
+    print(capy_dict[v])
+
