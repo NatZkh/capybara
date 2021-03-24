@@ -83,3 +83,32 @@ new_capys_dic = {c.name: c for c in capy_list}
 for v in result:
     print(capy_dict[v])
 
+# function to find the oldest capybara in the list
+
+def find_oldest_capi(listname):
+    max_age = 0
+    for c in listname:
+        if c.age > max_age:
+            max_age = c.age
+            oldest_capi = c
+    return oldest_capi
+
+#function to find youngest capybara in the list
+
+def find_youngest_capi(listname):
+        youngest_capi = listname[0]
+        for c in listname:
+            if c.age < youngest_capi.age:
+                youngest_capi = c
+        return youngest_capi
+
+#class which contains youngest and oldest capybara from the specified list
+
+class CapybaraAgeExtremes:
+    def __init__(self, capilist):
+        self.youngest = find_youngest_capi(capilist)
+        self.oldest = find_oldest_capi(capilist)
+    
+    def __str__(self):
+        return "CapybaraAgeExtremes[" + str(self.youngest) + ", " + str(self.oldest) + "]"
+
