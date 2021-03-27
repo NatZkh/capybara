@@ -27,6 +27,12 @@ class Capybara:
 
     def as_list(self):
         return [self.name, self.age]
+    
+    def as_row(self):
+        return self.name + "," + str(self.age)
+
+
+
 
 capybara1=Capybara('Dora',32)
 capybara2=Capybara('Tim',24)
@@ -80,7 +86,6 @@ for cp in capy_list:
 new_capys_dic = {c.name: c for c in capy_list}
 
 
-
 # function to find the oldest capybara in the list
 
 def find_oldest_capi(listname):
@@ -110,3 +115,22 @@ class CapybaraAgeExtremes:
     def __str__(self):
         return "CapybaraAgeExtremes[" + str(self.youngest) + ", " + str(self.oldest) + "]"
 
+#class that keeps a set of capybaras and can read and write capybaras into csv file
+
+class CapybaraDataset:
+    def __init__(self, path):
+        self.capybaras = read_capis(path)
+        
+    def write(self, path):
+        write_capybaras(path, self.capybaras)
+    
+    def read(self, path):
+        self.capybaras = read_capis(path)
+    
+    def __str__(self):
+        ret_val = "Name,Age\n"
+        for c in self.capybaras:
+            ret_val += (c.as_row() + "\n")
+        return ret_val
+    
+    __repr__ = __str__
