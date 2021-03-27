@@ -79,10 +79,7 @@ for cp in capy_list:
 
 new_capys_dic = {c.name: c for c in capy_list}
 
-#then
 
-for v in result:
-    print(capy_dict[v])
 
 # function to find the oldest capybara in the list
 
