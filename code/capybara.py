@@ -57,16 +57,17 @@ def write_capybaras(filename, capis):
 #final way to get the list of capybaras with longest name
 capy_list = [capybara1, capybara2, capybara3, capybara4, capybara5, capybara6]
 
-max_len = -1
-result = []
-for c in capy_list:
-    if len(c.name) > max_len:
-        max_len = len(c.name)
-        result = [c.name]
-    elif len(c.name) == max_len:
-        result.append(c.name)
+def longest_name_capis(listname):
+    max_len = -1
+    result = []
+    for c in capy_list:
+        if len(c.name) > max_len:
+            max_len = len(c.name)
+            result = [c.name]
+        elif len(c.name) == max_len:
+            result.append(c.name)
     
-print(result)
+    return result
 
 #to print not only name but full Capybara, create capybara dictionary
 
